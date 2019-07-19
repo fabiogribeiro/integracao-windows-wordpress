@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,9 @@ namespace Integracao_Windows
         public Encomendas(Modelo mc) : this()
         {
             context = mc;
+
+            context.Encomendas.Load();
+            gridEncomendas.ItemsSource = context.Encomendas.Local;
         }
 
         public void Update_Data()
