@@ -16,7 +16,9 @@
             <Button Width="100" Height="30" Margin="10, 0, 0, 0" Click="Produtos_Click">Produtos</Button>
             <Button Width="100" Height="30" Margin="10, 0, 0, 0" Click="Encomendas_Click">Encomendas</Button>
             <Button Width="100" Height="30" Margin="10, 0, 0, 0" Click="NovoProduto_Click">Novo Produto</Button>
-            <Label Name="lb"></Label>
+            <TextBox VerticalAlignment="Center" Margin="20, 0, 0, 0" Background="Transparent" BorderThickness="0" IsReadOnly="True">
+                Endereço: https://mindboggle-257618.easywp.com/shop/
+            </TextBox>
         </StackPanel>
         <Border Grid.Row="0" BorderBrush="LightGray" BorderThickness="0 0 0 1"></Border>
 
