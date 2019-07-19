@@ -27,6 +27,6 @@
         <TextBox Grid.Row="1" Grid.Column="1" Width="100" HorizontalAlignment="Left" Margin="10, 10, 0, 0"></TextBox>
         <TextBox Grid.Row="2" Grid.Column="1" Width="100" HorizontalAlignment="Left" Margin="10, 10, 0, 0"></TextBox>
 
-        <Button Grid.Row="3" Grid.ColumnSpan="2" Width="120" Height="30" Margin="20,40,0,0">Submeter</Button>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Width="120" Height="30" Margin="20,40,0,0" Click="Button_Click">Submeter</Button>
     </Grid>
 </Page>

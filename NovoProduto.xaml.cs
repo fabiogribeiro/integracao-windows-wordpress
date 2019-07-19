@@ -20,9 +20,21 @@ namespace Integracao_Windows
     /// </summary>
     public partial class NovoProduto : Page
     {
+        private Page pageProdutos;
+
         public NovoProduto()
         {
             InitializeComponent();
+        }
+
+        public NovoProduto(Page voltarProdutos) : this()
+        {
+            pageProdutos = voltarProdutos;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(pageProdutos);
         }
     }
 }

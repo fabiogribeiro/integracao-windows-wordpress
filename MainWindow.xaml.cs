@@ -49,7 +49,7 @@ namespace Integracao_Windows
 
         private void NovoProduto_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.NavigationService.Navigate(new NovoProduto());
+            mainFrame.NavigationService.Navigate(new NovoProduto(pageProdutos));
         }
 
         /// <summary>
