@@ -24,5 +24,21 @@ namespace Integracao_Windows
         {
             InitializeComponent();
         }
+
+        private void Encomendas_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.NavigationService.Navigate(new Encomendas());
+        }
+
+
+        private void Produtos_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.NavigationService.Navigate(new Produtos());
+        } 
+
+        private void NovoProduto_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.NavigationService.Navigate(new NovoProduto());
+        }
     }
 }

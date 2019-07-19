@@ -13,13 +13,13 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Width="100" Height="30" Margin="10, 0, 0, 0">Produtos</Button>
-            <Button Width="100" Height="30" Margin="10, 0, 0, 0">Encomendas</Button>
-            <Button Width="100" Height="30" Margin="10, 0, 0, 0">Novo Produto</Button>
+            <Button Width="100" Height="30" Margin="10, 0, 0, 0" Click="Produtos_Click">Produtos</Button>
+            <Button Width="100" Height="30" Margin="10, 0, 0, 0" Click="Encomendas_Click">Encomendas</Button>
+            <Button Width="100" Height="30" Margin="10, 0, 0, 0" Click="NovoProduto_Click">Novo Produto</Button>
         </StackPanel>
         <Border Grid.Row="0" BorderBrush="LightGray" BorderThickness="0 0 0 1"></Border>
 
-        <Frame Grid.Row="1" Source="Produtos.xaml"></Frame>
+        <Frame Name="mainFrame" Grid.Row="1" Source="Produtos.xaml" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>
 
