@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Integracao_Windows"
         mc:Ignorable="d"
-        Title="Windows Wordpress" Height="450" Width="800">
+        Title="Windows Wordpress" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70" />
@@ -16,6 +16,7 @@
             <Button Width="100" Height="30" Margin="10, 0, 0, 0" Click="Produtos_Click">Produtos</Button>
             <Button Width="100" Height="30" Margin="10, 0, 0, 0" Click="Encomendas_Click">Encomendas</Button>
             <Button Width="100" Height="30" Margin="10, 0, 0, 0" Click="NovoProduto_Click">Novo Produto</Button>
+            <Label Name="lb"></Label>
         </StackPanel>
         <Border Grid.Row="0" BorderBrush="LightGray" BorderThickness="0 0 0 1"></Border>
 

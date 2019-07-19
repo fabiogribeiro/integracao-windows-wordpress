@@ -9,6 +9,6 @@
       Title="Produtos">
 
     <Grid>
-        <Label>Produtos</Label> 
+        <Label Name="prod">Produtos</Label> 
     </Grid>
 </Page>

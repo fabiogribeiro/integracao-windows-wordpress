@@ -20,9 +20,20 @@ namespace Integracao_Windows
     /// </summary>
     public partial class Produtos : Page
     {
+        private Modelo context;
+
         public Produtos()
         {
             InitializeComponent();
+        }
+
+        public Produtos(Modelo mc) : this()
+        {
+            context = mc;
+        }
+
+        public void Update_Data()
+        {
         }
     }
 }

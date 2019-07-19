@@ -20,9 +20,20 @@ namespace Integracao_Windows
     /// </summary>
     public partial class Encomendas : Page
     {
+        Modelo context;
+
         public Encomendas()
         {
             InitializeComponent();
+        }
+
+        public Encomendas(Modelo mc) : this()
+        {
+            context = mc;
+        }
+
+        public void Update_Data()
+        {
         }
     }
 }
