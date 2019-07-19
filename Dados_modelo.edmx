@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Dados_modelo.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\fabio\source\repos\integracao-windows-wordpress\bin\Debug\basedados.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Encomendas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Endereco" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="DataMod" Type="integer" />
+        </EntityType>
+        <EntityType Name="Produtos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Preco" Type="real" />
+          <Property Name="URLImagem" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="DataMod" Type="integer" />
+        </EntityType>
+        <EntityContainer Name="Dados_modeloStoreContainer">
+          <EntitySet Name="Encomendas" EntityType="Self.Encomendas" store:Type="Tables" />
+          <EntitySet Name="Produtos" EntityType="Self.Produtos" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Dados_modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Encomenda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Endereco" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="DataMod" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Produto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Preco" Type="Double" />
+          <Property Name="URLImagem" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="DataMod" Type="Int64" />
+        </EntityType>
+        <EntityContainer Name="Modelo" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Encomendas" EntityType="Self.Encomenda" />
+          <EntitySet Name="Produtos" EntityType="Self.Produto" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Dados_modeloStoreContainer" CdmEntityContainer="Modelo">
+          <EntitySetMapping Name="Encomendas">
+            <EntityTypeMapping TypeName="Dados_modelo.Encomenda">
+              <MappingFragment StoreEntitySet="Encomendas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="DataMod" ColumnName="DataMod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produtos">
+            <EntityTypeMapping TypeName="Dados_modelo.Produto">
+              <MappingFragment StoreEntitySet="Produtos">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Preco" ColumnName="Preco" />
+                <ScalarProperty Name="URLImagem" ColumnName="URLImagem" />
+                <ScalarProperty Name="DataMod" ColumnName="DataMod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
