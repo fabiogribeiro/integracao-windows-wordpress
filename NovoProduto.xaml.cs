@@ -20,20 +20,26 @@ namespace Integracao_Windows
     /// </summary>
     public partial class NovoProduto : Page
     {
+        private Modelo context;
         private Page pageProdutos;
+        private APIController api = new APIController();
 
         public NovoProduto()
         {
             InitializeComponent();
         }
 
-        public NovoProduto(Page voltarProdutos) : this()
+        public NovoProduto(Modelo mc, Page voltarProdutos) : this()
         {
+            context = mc; 
             pageProdutos = voltarProdutos;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            Produto produto = await api.CreateProduct(tbNome.Text, decimal.Parse(tbPreco.Text), tbDescricao.Text);
+
             NavigationService.Navigate(pageProdutos);
         }
     }

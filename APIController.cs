@@ -94,7 +94,7 @@ namespace Integracao_Windows
         }
 
         /// <summary>
-        /// Obter produtos ignorando as existentes
+        /// Obter novos produtos a partir de um certo numero.
         /// </summary>
         /// <param name="offset">Numero de produtos a ignorar</param>
         /// <returns>Lista de produtos</returns>
@@ -110,17 +110,45 @@ namespace Integracao_Windows
 
             products.ForEach((p) =>
             {
-                produtos.Add(new Produto
+                Produto newp = new Produto
                 {
                     id = (long)p.id,
                     Nome = p.name,
                     Preco = (double)p.price,
-                    URLImagem = p.images[0].src,
                     DataMod = DateTimeToUnix(p.date_modified_gmt)
-                });
+                };
+
+                if (p.images.Count > 0)
+                    newp.URLImagem = p.images[0].src;
+
+                produtos.Add(newp);
             });
 
             return produtos;
+        }
+
+        public async Task<Produto> CreateProduct(string name, decimal price, string desc)
+        {
+            Product p = new Product
+            {
+                name = name,
+                regular_price = price,
+                description = desc
+            };
+
+            Product response = await wc.Product.Add(p);
+
+            Produto result = new Produto
+            {
+                id = (long)response.id,
+                Nome = response.name,
+                Preco = (double)response.price,
+            };
+
+            if (response.images.Count > 0)
+                result.URLImagem = response.images[0].src;
+
+            return result;
         }
     }
 }
