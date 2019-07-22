@@ -88,7 +88,6 @@ namespace Integracao_Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Update_Data(null, null);
             InitUpdates();
 
             mainFrame.NavigationService.Navigate(pageProdutos);
@@ -97,18 +96,10 @@ namespace Integracao_Windows
         private void InitUpdates()
         {
             DispatcherTimer timer = new DispatcherTimer();
-            timer.Tick += new EventHandler(Update_Data);
-            timer.Interval = new TimeSpan(0, 0, 10);
+            timer.Tick += new EventHandler(pageEncomendas.Update_Data);
+            timer.Tick += new EventHandler(pageProdutos.Update_Data);
+            timer.Interval = new TimeSpan(0, 0, 5);
             timer.Start();
-        }
-
-        /// <summary>
-        /// Verificar base de dados e atualizar se necessário
-        /// </summary>
-        private void Update_Data(object sender, EventArgs e)
-        {
-            pageEncomendas.Update_Data();
-            pageProdutos.Update_Data();
         }
     }
 }

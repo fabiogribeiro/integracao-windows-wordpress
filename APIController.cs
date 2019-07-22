@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using WooCommerceNET;
 using WooCommerceNET.WooCommerce.v3;
+using System.Linq;
 
 namespace Integracao_Windows
 {
@@ -28,7 +29,8 @@ namespace Integracao_Windows
         {
             var orders = await wc.Order.GetAll(new Dictionary<string, string>()
             {
-                {"offset", offset.ToString() }
+                {"offset", offset.ToString()},
+                {"order", "asc" }
             });
 
             List<Encomenda> encomendas = new List<Encomenda>();
@@ -49,9 +51,14 @@ namespace Integracao_Windows
 
         public async Task<List<Encomenda>> GetEncomendasFromArray<T>(IEnumerable<T> arr)
         {
+            // Se arr estiver vazio já sabemos o resultado
+            if (arr.Count() == 0)
+                return new List<Encomenda>();
+
             var orders = await wc.Order.GetAll(new Dictionary<string, string>()
             {
-                {"include",  string.Join(",", arr)}
+                {"include",  string.Join(",", arr)},
+                {"order", "asc" }
             });
 
             List<Encomenda> encomendas = new List<Encomenda>();
@@ -74,7 +81,8 @@ namespace Integracao_Windows
         {
             var products = await wc.Product.GetAll(new Dictionary<string, string>()
             {
-                {"offset", offset.ToString() }
+                {"offset", offset.ToString()},
+                {"order", "asc" }
             });
 
             List<Produto> produtos = new List<Produto>();
@@ -95,9 +103,14 @@ namespace Integracao_Windows
         }
         public async Task<List<Produto>> GetProdutosFromArray<T>(IEnumerable<T> arr)
         {
+            // Se arr estiver vazio já sabemos o resultado
+            if (arr.Count() == 0)
+                return new List<Produto>();
+
             var products = await wc.Product.GetAll(new Dictionary<string, string>()
             {
-                {"include",  string.Join(",", arr)}
+                {"include",  string.Join(",", arr)},
+                {"order", "asc" }
             });
 
             List<Produto> produtos = new List<Produto>();

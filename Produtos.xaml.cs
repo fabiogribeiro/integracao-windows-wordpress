@@ -32,7 +32,7 @@ namespace Integracao_Windows
             context = mc;
         }
 
-        public void Update_Data()
+        public async void Update_Data(object sender, EventArgs ea)
         {
         }
     }

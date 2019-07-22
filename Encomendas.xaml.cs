@@ -22,6 +22,7 @@ namespace Integracao_Windows
     public partial class Encomendas : Page
     {
         Modelo context;
+        APIController api = new APIController();
 
         public Encomendas()
         {
@@ -36,8 +37,32 @@ namespace Integracao_Windows
             gridEncomendas.ItemsSource = context.Encomendas.Local;
         }
 
-        public void Update_Data()
+        public async void Update_Data(object sender, EventArgs ea)
         {
-        }
+            // Atualizar encomendas na base de dados caso necessário
+            var encomendas = context.Encomendas.Local;
+            var apiEncomendas = await api.GetEncomendasFromArray(encomendas.Select((e) => e.id));
+
+            for (int i = 0; i < encomendas.Count; ++i)
+            {
+                // Atualizamos se modificado
+                if (apiEncomendas[i].DataMod > encomendas[i].DataMod)
+                {
+                    encomendas[i].Estado = apiEncomendas[i].Estado;
+                    encomendas[i].Endereco = apiEncomendas[i].Endereco;
+                    encomendas[i].DataMod = apiEncomendas[i].DataMod;
+                    context.SaveChanges();
+
+                    // Estas alterações não notificam a lista por isso atualizamos
+                    gridEncomendas.Items.Refresh();
+
+                }
+            }
+
+            // Obter novas encomendas
+            var recentEncomendas = await api.GetEncomendasFrom(encomendas.Count());
+            context.Encomendas.AddRange(recentEncomendas);
+            context.SaveChanges();
+       }
     }
 }
