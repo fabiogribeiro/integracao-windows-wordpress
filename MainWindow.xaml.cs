@@ -98,7 +98,7 @@ namespace Integracao_Windows
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(pageEncomendas.Update_Data);
             timer.Tick += new EventHandler(pageProdutos.Update_Data);
-            timer.Interval = new TimeSpan(0, 0, 5);
+            timer.Interval = new TimeSpan(0, 0, 10);
             timer.Start();
         }
     }

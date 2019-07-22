@@ -39,13 +39,13 @@ namespace Integracao_Windows
 
         public async void Update_Data(object sender, EventArgs ea)
         {
-            // Atualizar encomendas na base de dados caso necessário
+            // Buscar informação existente
             var encomendas = context.Encomendas.Local;
             var apiEncomendas = await api.GetEncomendasFromArray(encomendas.Select((e) => e.id));
 
             for (int i = 0; i < encomendas.Count; ++i)
             {
-                // Atualizamos se modificado
+                // Atualizamos se a data the modicação é posterior
                 if (apiEncomendas[i].DataMod > encomendas[i].DataMod)
                 {
                     encomendas[i].Estado = apiEncomendas[i].Estado;
@@ -55,7 +55,6 @@ namespace Integracao_Windows
 
                     // Estas alterações não notificam a lista por isso atualizamos
                     gridEncomendas.Items.Refresh();
-
                 }
             }
 
