@@ -37,8 +37,22 @@ namespace Integracao_Windows
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(tbNome.Text) || string.IsNullOrWhiteSpace(tbDescricao.Text))
+            {
+                MessageBox.Show("Preencha todos os campos.", "Erro");
+                return;
+            }
 
-            Produto produto = await api.CreateProduct(tbNome.Text, decimal.Parse(tbPreco.Text), tbDescricao.Text);
+            decimal price;
+            if(decimal.TryParse(tbPreco.Text, out price))
+            {
+                Produto produto = await api.CreateProduct(tbNome.Text, price, tbDescricao.Text);
+            }
+            else
+            {
+                MessageBox.Show("Introduza um inteiro ou decimal (separado por vírgula ou outro dependendo da zona).", "Erro");
+                return;
+            }
 
             NavigationService.Navigate(pageProdutos);
         }
