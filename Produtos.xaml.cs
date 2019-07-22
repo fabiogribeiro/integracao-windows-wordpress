@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace Integracao_Windows
     public partial class Produtos : Page
     {
         private Modelo context;
+        private APIController api = new APIController();
 
         public Produtos()
         {
@@ -30,10 +32,18 @@ namespace Integracao_Windows
         public Produtos(Modelo mc) : this()
         {
             context = mc;
+
+            context.Produtos.Load();
+            lbProdutos.ItemsSource = context.Produtos.Local;
         }
 
         public async void Update_Data(object sender, EventArgs ea)
         {
-        }
+            // Obter novos produtos
+            var produtos = await api.GetProdutosFrom(context.Produtos.Local.Count());
+            context.Produtos.AddRange(produtos);
+            context.SaveChanges();
+       }
+
     }
 }

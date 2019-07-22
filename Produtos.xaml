@@ -9,6 +9,19 @@
       Title="Produtos">
 
     <Grid>
-        <Label Name="prod">Produtos</Label> 
+        <ListBox Name="lbProdutos">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="100" Height="100" Source="{Binding URLImagem}">
+                        </Image>
+                        <StackPanel Margin="24, 0, 0, 0">
+                            <Label FontSize="18" Content="{Binding Nome}"></Label>
+                            <TextBlock Margin="4, 0, 0, 0" Text="{Binding Preco, StringFormat=Preço: {0}€}"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>
