@@ -19,7 +19,7 @@ using System.Windows.Threading;
 namespace Integracao_Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// A janela principal. Contem as páginas de navegação comanda atualização dos dados.
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -93,12 +93,15 @@ namespace Integracao_Windows
             mainFrame.NavigationService.Navigate(pageProdutos);
         }
 
+        /// <summary>
+        /// Atualizar regularmente cada uma das páginas.
+        /// </summary>
         private void InitUpdates()
         {
             DispatcherTimer timer = new DispatcherTimer();
             timer.Tick += new EventHandler(pageEncomendas.Update_Data);
             timer.Tick += new EventHandler(pageProdutos.Update_Data);
-            timer.Interval = new TimeSpan(0, 0, 10);
+            timer.Interval = new TimeSpan(0, 0, 6);
             timer.Start();
         }
     }
