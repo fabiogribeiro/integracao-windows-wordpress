@@ -17,6 +17,8 @@ Existe uma MainWindow que é resposável por regularmente atualizar duas página
 
 Podemos abrir o endereço presente no programa e se for feita uma encomenda, esta é adicionada à base de dados local. Se for criado um novo produto no programa, este aparece no website.
 
+O download pode ser feito [neste link](https://github.com/fabiogribeiro/integracao-windows-wordpress/files/3422869/Executavel.zip) ou na página releases.
+
 ### Nota
 
 Para executar pode ser necessário atualizar o .NET Framework.
