@@ -9,7 +9,7 @@
       Title="Produtos">
 
     <Grid>
-        <ListBox Name="lbProdutos">
+        <ListBox Name="lbProdutos" Height="380">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
