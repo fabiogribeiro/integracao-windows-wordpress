@@ -127,7 +127,7 @@ namespace Integracao_Windows
             return produtos;
         }
 
-        public async Task<Produto> CreateProduct(string name, decimal price, string desc)
+        public async Task<Produto> CreateProduct(string name, decimal price, string desc, string image)
         {
             Product p = new Product
             {
@@ -135,6 +135,17 @@ namespace Integracao_Windows
                 regular_price = price,
                 description = desc
             };
+
+            if (!string.IsNullOrWhiteSpace(image))
+            {
+                List<ProductImage> images = new List<ProductImage>();
+                images.Add(new ProductImage
+                {
+                    src = image
+                });
+
+                p.images = images;
+            }
 
             Product response = await wc.Product.Add(p);
 

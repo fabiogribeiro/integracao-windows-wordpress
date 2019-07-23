@@ -46,7 +46,15 @@ namespace Integracao_Windows
             decimal price;
             if(decimal.TryParse(tbPreco.Text, out price))
             {
-                Produto produto = await api.CreateProduct(tbNome.Text, price, tbDescricao.Text);
+                try
+                {
+                    Produto produto = await api.CreateProduct(tbNome.Text, price, tbDescricao.Text, tbURL.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message, "Erro");
+                    return;
+                }
             }
             else
             {
